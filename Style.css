@@ -1,0 +1,119 @@
+/* ======== ESTILO GERAL ======== */
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: radial-gradient(circle at top, #0a0f1c 0%, #05080f 100%);
+  color: #e5e5e5;
+  text-align: center;
+  overflow-x: hidden;
+}
+
+/* ======== CABEÇALHO ======== */
+header {
+  padding: 80px 20px;
+  background: linear-gradient(180deg, #111a2e, #0a0f1c);
+  color: #00d4ff;
+  animation: fadeDown 1.5s ease-out;
+}
+
+.neon {
+  color: #00e5ff;
+  text-shadow: 0 0 8px #00e5ff, 0 0 20px #00e5ff, 0 0 40px #0097a7;
+  font-size: 3em;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+}
+
+header p {
+  font-size: 1.2em;
+  color: #aeeaff;
+}
+
+/* ======== SEÇÕES ======== */
+main {
+  padding: 50px 20px;
+}
+
+section {
+  margin-bottom: 60px;
+}
+
+h2 {
+  color: #00ffc6;
+  text-shadow: 0 0 10px #00ffc6;
+  font-size: 1.8em;
+  margin-bottom: 20px;
+}
+
+p, li {
+  max-width: 800px;
+  margin: 0 auto 15px auto;
+  line-height: 1.6;
+  font-size: 1.1em;
+  color: #d9e4eb;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  margin: 10px 0;
+  transition: transform 0.2s ease;
+}
+
+li:hover {
+  color: #00d4ff;
+  transform: scale(1.05);
+}
+
+/* ======== RODAPÉ ======== */
+footer {
+  background: #0a0f1c;
+  padding: 50px 20px;
+  border-top: 2px solid #00d4ff;
+}
+
+footer h2 {
+  color: #00ffc6;
+}
+
+.contatos p {
+  margin: 10px 0;
+  font-size: 1.05em;
+  color: #b0c8d6;
+}
+
+.contatos i {
+  color: #00d4ff;
+  margin-right: 8px;
+}
+
+.creditos {
+  margin-top: 30px;
+  font-size: 0.9em;
+  color: #6b7a8e;
+}
+
+/* ======== ANIMAÇÕES ======== */
+@keyframes fadeDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+  animation: fadeIn 1.5s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ======== RESPONSIVIDADE ======== */
+@media (max-width: 768px) {
+  header h1 { font-size: 2em; }
+  h2 { font-size: 1.4em; }
+  p, li { font-size: 1em; }
+}
