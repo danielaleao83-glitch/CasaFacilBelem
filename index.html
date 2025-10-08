@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CasaFacilBelem - Serviços Inteligentes</title>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <style>
 :root {
   --primary:#0ff;
@@ -36,13 +37,15 @@ button:hover { background:var(--secondary); transform:scale(1.05); }
 
 footer { text-align:center; padding:20px; border-top:1px solid #0ff; color:var(--text); }
 
-@keyframes fadeInUp {
-  from { opacity:0; transform:translateY(30px); }
-  to { opacity:1; transform:translateY(0); }
-}
+.animate { opacity:0; transform:translateY(30px); transition:0.6s; }
+.animate.visible { opacity:1; transform:translateY(0); }
 
-.animate { animation: fadeInUp 1s ease forwards; }
+table { width:100%; border-collapse:collapse; margin-top:20px; }
+th,td { padding:10px; border-bottom:1px solid #0ff; text-align:center; }
+th { background: #1a1a1a; color:var(--primary); }
+tfoot td { font-weight:bold; color:var(--secondary); }
 
+canvas { margin-top:20px; background: #121212; border-radius:15px; padding:10px; }
 </style>
 </head>
 <body>
@@ -52,6 +55,8 @@ footer { text-align:center; padding:20px; border-top:1px solid #0ff; color:var(-
   <nav>
     <a href="#sobre">Sobre</a>
     <a href="#servicos">Serviços</a>
+    <a href="#precos">Preços</a>
+    <a href="#graficos">Gráficos</a>
     <a href="#contato">Contato</a>
   </nav>
 </header>
@@ -65,48 +70,3 @@ footer { text-align:center; padding:20px; border-top:1px solid #0ff; color:var(-
   <h2 class="animate">Nossos Serviços</h2>
   <div class="cards">
     <div class="card animate" style="animation-delay:0.2s;">
-      <h3>Eletricista</h3>
-      <p>Instalação, manutenção e reparos elétricos com segurança e tecnologia.</p>
-      <button>Agendar</button>
-    </div>
-    <div class="card animate" style="animation-delay:0.4s;">
-      <h3>Encanador</h3>
-      <p>Conserto de vazamentos, tubulações e instalação hidráulica confiável.</p>
-      <button>Agendar</button>
-    </div>
-    <div class="card animate" style="animation-delay:0.6s;">
-      <h3>Pintura</h3>
-      <p>Pintura profissional de ambientes, acabamento moderno e durável.</p>
-      <button>Agendar</button>
-    </div>
-    <div class="card animate" style="animation-delay:0.8s;">
-      <h3>Carpintaria</h3>
-      <p>Montagem de móveis e reparos em madeira com acabamento de qualidade.</p>
-      <button>Agendar</button>
-    </div>
-  </div>
-</section>
-
-<section id="contato">
-  <h2 class="animate">Contato</h2>
-  <p class="animate" style="animation-delay:0.3s;">Entre em contato pelo WhatsApp ou e-mail e agende seu serviço de forma rápida e prática.</p>
-  <button onclick="alert('Em breve sistema de agendamento online!')">Agendar Serviço</button>
-</section>
-
-<footer>
-  &copy; 2025 CasaFacilBelem - Todos os direitos reservados
-</footer>
-
-<script>
-// Aplica animação quando elementos aparecem na tela
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if(entry.isIntersecting) entry.target.classList.add('animate');
-  });
-}, { threshold: 0.1 });
-
-document.querySelectorAll('section, .card').forEach(el => observer.observe(el));
-</script>
-
-</body>
-</html>
