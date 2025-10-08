@@ -1,119 +1,110 @@
-/* ======== ESTILO GERAL ======== */
 body {
-  margin: 0;
   font-family: 'Poppins', sans-serif;
-  background: radial-gradient(circle at top, #0a0f1c 0%, #05080f 100%);
+  background: #0a0f1c;
   color: #e5e5e5;
+  margin: 0;
   text-align: center;
-  overflow-x: hidden;
 }
+a { text-decoration: none; color: inherit; }
 
-/* ======== CABEÇALHO ======== */
 header {
-  padding: 80px 20px;
+  padding: 60px 20px;
   background: linear-gradient(180deg, #111a2e, #0a0f1c);
   color: #00d4ff;
-  animation: fadeDown 1.5s ease-out;
 }
+header h1 { font-size: 3em; color:#00e5ff; margin-bottom:10px; text-shadow: 0 0 10px #00e5ff; }
+header p { font-size:1.2em; color:#aeeaff; }
 
-.neon {
-  color: #00e5ff;
-  text-shadow: 0 0 8px #00e5ff, 0 0 20px #00e5ff, 0 0 40px #0097a7;
-  font-size: 3em;
-  letter-spacing: 1px;
-  margin-bottom: 10px;
-}
+main { padding: 40px 20px; }
+section { margin-bottom: 60px; }
+section h2 { color: #00ffc6; font-size: 1.8em; margin-bottom: 20px; text-shadow:0 0 10px #00ffc6; }
+p { max-width: 800px; margin: 0 auto 15px auto; line-height:1.6; font-size:1.1em; color:#d9e4eb; }
 
-header p {
-  font-size: 1.2em;
-  color: #aeeaff;
+.grid-servicos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
 }
+.servico-card {
+  background:#111a2e;
+  border-radius:12px;
+  padding:20px;
+  width:250px;
+  box-shadow: 0 0 15px #00d4ff33;
+  transition: transform 0.3s;
+}
+.servico-card:hover { transform: scale(1.05); }
+.servico-card h3 { color: #00ffc6; margin-bottom: 10px; }
+.servico-card button {
+  background: linear-gradient(90deg,#00d4ff,#00ffc6);
+  border:none;
+  padding:10px 20px;
+  margin:5px;
+  border-radius:10px;
+  cursor:pointer;
+  color:#000;
+  font-weight:600;
+  transition:0.3s;
+}
+.servico-card button:hover { transform: scale(1.05); box-shadow:0 0 10px #00ffc6; }
 
-/* ======== SEÇÕES ======== */
-main {
-  padding: 50px 20px;
+.formulario {
+  background: rgba(255,255,255,0.05);
+  padding:30px;
+  margin:0 auto;
+  max-width:600px;
+  border-radius:15px;
+  box-shadow:0 0 15px #00d4ff33;
+  backdrop-filter: blur(6px);
 }
+.formulario input, .formulario textarea {
+  width:90%;
+  padding:12px;
+  margin:10px 0;
+  border:none;
+  border-radius:10px;
+  background-color:#0e1624;
+  color:#e5e5e5;
+  font-size:1em;
+  outline:none;
+  transition:0.3s;
+}
+.formulario input:focus, .formulario textarea:focus { box-shadow:0 0 10px #00ffc6; }
+.formulario button {
+  background: linear-gradient(90deg,#00ffc6,#00d4ff);
+  border:none;
+  padding:12px 30px;
+  border-radius:10px;
+  cursor:pointer;
+  font-weight:600;
+  color:#000;
+  transition:0.3s;
+}
+.formulario button:hover { transform: scale(1.05); box-shadow:0 0 15px #00ffc6; }
 
-section {
-  margin-bottom: 60px;
+.modal-bg {
+  display:none;
+  position:fixed;
+  top:0; left:0;
+  width:100%; height:100%;
+  background: rgba(0,0,0,0.7);
+  justify-content:center;
+  align-items:center;
+  z-index:100;
 }
+.modal {
+  background:#111a2e;
+  padding:20px;
+  border-radius:12px;
+  max-width:400px;
+  width:90%;
+  text-align:left;
+  color:#e5e5e5;
+}
+.modal h4 { color:#00ffc6; margin-bottom:10px; }
+.modal button { margin-top:10px; }
 
-h2 {
-  color: #00ffc6;
-  text-shadow: 0 0 10px #00ffc6;
-  font-size: 1.8em;
-  margin-bottom: 20px;
-}
+footer { background:#0a0f1c; padding:40px 20px; color:#b0c8d6; }
 
-p, li {
-  max-width: 800px;
-  margin: 0 auto 15px auto;
-  line-height: 1.6;
-  font-size: 1.1em;
-  color: #d9e4eb;
-}
-
-ul {
-  list-style: none;
-  padding: 0;
-}
-
-li {
-  margin: 10px 0;
-  transition: transform 0.2s ease;
-}
-
-li:hover {
-  color: #00d4ff;
-  transform: scale(1.05);
-}
-
-/* ======== RODAPÉ ======== */
-footer {
-  background: #0a0f1c;
-  padding: 50px 20px;
-  border-top: 2px solid #00d4ff;
-}
-
-footer h2 {
-  color: #00ffc6;
-}
-
-.contatos p {
-  margin: 10px 0;
-  font-size: 1.05em;
-  color: #b0c8d6;
-}
-
-.contatos i {
-  color: #00d4ff;
-  margin-right: 8px;
-}
-
-.creditos {
-  margin-top: 30px;
-  font-size: 0.9em;
-  color: #6b7a8e;
-}
-
-/* ======== ANIMAÇÕES ======== */
-@keyframes fadeDown {
-  from { opacity: 0; transform: translateY(-20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.fade-in {
-  animation: fadeIn 1.5s ease-out;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* ======== RESPONSIVIDADE ======== */
-@media (max-width: 768px) {
-  header h1 { font-size: 2em; }
-  h2 { font-size: 1.4em; }
-  p, li { font-size: 1em; }
-}
+@media(max-width:768px) { .grid-servicos { flex-direction: column; align-items:center; } }

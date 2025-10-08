@@ -1,228 +1,224 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CasaFácil Belém</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-  <script src="https://kit.fontawesome.com/9c2b4a5a0a.js" crossorigin="anonymous"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CasaFácil Belém</title>
 
-  <style>
-    /* ======== ESTILO GERAL ======== */
-    body {
-      margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background: radial-gradient(circle at top, #0a0f1c 0%, #05080f 100%);
-      color: #e5e5e5;
-      text-align: center;
-      overflow-x: hidden;
-    }
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<script src="https://kit.fontawesome.com/9c2b4a5a0a.js" crossorigin="anonymous"></script>
 
-    /* ======== CABEÇALHO ======== */
-    header {
-      padding: 80px 20px;
-      background: linear-gradient(180deg, #111a2e, #0a0f1c);
-      color: #00d4ff;
-      animation: fadeDown 1.5s ease-out;
-    }
+<style>
+/* ====== GERAL ====== */
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #0a0f1c;
+  color: #e5e5e5;
+  margin: 0;
+  text-align: center;
+}
+a { text-decoration: none; color: inherit; }
 
-    .neon {
-      color: #00e5ff;
-      text-shadow: 0 0 8px #00e5ff, 0 0 20px #00e5ff, 0 0 40px #0097a7;
-      font-size: 3em;
-      letter-spacing: 1px;
-      margin-bottom: 10px;
-    }
+/* ====== CABEÇALHO ====== */
+header {
+  padding: 60px 20px;
+  background: linear-gradient(180deg, #111a2e, #0a0f1c);
+  color: #00d4ff;
+}
+header h1 { font-size: 3em; color:#00e5ff; margin-bottom:10px; text-shadow: 0 0 10px #00e5ff; }
+header p { font-size:1.2em; color:#aeeaff; }
 
-    header p {
-      font-size: 1.2em;
-      color: #aeeaff;
-    }
+/* ====== SEÇÕES ====== */
+main { padding: 40px 20px; }
+section { margin-bottom: 60px; }
+section h2 { color: #00ffc6; font-size: 1.8em; margin-bottom: 20px; text-shadow:0 0 10px #00ffc6; }
+p { max-width: 800px; margin: 0 auto 15px auto; line-height:1.6; font-size:1.1em; color:#d9e4eb; }
 
-    /* ======== SEÇÕES ======== */
-    main {
-      padding: 50px 20px;
-    }
+/* ====== GRID DE SERVIÇOS ====== */
+.grid-servicos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+.servico-card {
+  background:#111a2e;
+  border-radius:12px;
+  padding:20px;
+  width:250px;
+  box-shadow: 0 0 15px #00d4ff33;
+  transition: transform 0.3s;
+}
+.servico-card:hover { transform: scale(1.05); }
+.servico-card h3 { color: #00ffc6; margin-bottom: 10px; }
+.servico-card button {
+  background: linear-gradient(90deg,#00d4ff,#00ffc6);
+  border:none;
+  padding:10px 20px;
+  margin:5px;
+  border-radius:10px;
+  cursor:pointer;
+  color:#000;
+  font-weight:600;
+  transition:0.3s;
+}
+.servico-card button:hover { transform: scale(1.05); box-shadow:0 0 10px #00ffc6; }
 
-    section {
-      margin-bottom: 60px;
-    }
+/* ====== FORMULÁRIO ====== */
+.formulario {
+  background: rgba(255,255,255,0.05);
+  padding:30px;
+  margin:0 auto;
+  max-width:600px;
+  border-radius:15px;
+  box-shadow:0 0 15px #00d4ff33;
+  backdrop-filter: blur(6px);
+}
+.formulario input, .formulario textarea {
+  width:90%;
+  padding:12px;
+  margin:10px 0;
+  border:none;
+  border-radius:10px;
+  background-color:#0e1624;
+  color:#e5e5e5;
+  font-size:1em;
+  outline:none;
+  transition:0.3s;
+}
+.formulario input:focus, .formulario textarea:focus { box-shadow:0 0 10px #00ffc6; }
+.formulario button {
+  background: linear-gradient(90deg,#00ffc6,#00d4ff);
+  border:none;
+  padding:12px 30px;
+  border-radius:10px;
+  cursor:pointer;
+  font-weight:600;
+  color:#000;
+  transition:0.3s;
+}
+.formulario button:hover { transform: scale(1.05); box-shadow:0 0 15px #00ffc6; }
 
-    h2 {
-      color: #00ffc6;
-      text-shadow: 0 0 10px #00ffc6;
-      font-size: 1.8em;
-      margin-bottom: 20px;
-    }
+/* ====== MODAL ====== */
+.modal-bg {
+  display:none;
+  position:fixed;
+  top:0; left:0;
+  width:100%; height:100%;
+  background: rgba(0,0,0,0.7);
+  justify-content:center;
+  align-items:center;
+  z-index:100;
+}
+.modal {
+  background:#111a2e;
+  padding:20px;
+  border-radius:12px;
+  max-width:400px;
+  width:90%;
+  text-align:left;
+  color:#e5e5e5;
+}
+.modal h4 { color:#00ffc6; margin-bottom:10px; }
+.modal button { margin-top:10px; }
 
-    p, li {
-      max-width: 800px;
-      margin: 0 auto 15px auto;
-      line-height: 1.6;
-      font-size: 1.1em;
-      color: #d9e4eb;
-    }
+/* ====== RODAPÉ ====== */
+footer { background:#0a0f1c; padding:40px 20px; color:#b0c8d6; }
 
-    ul {
-      list-style: none;
-      padding: 0;
-    }
-
-    li {
-      margin: 10px 0;
-      transition: transform 0.2s ease;
-    }
-
-    li:hover {
-      color: #00d4ff;
-      transform: scale(1.05);
-    }
-
-    /* ======== FORMULÁRIO DE CONTATO ======== */
-    .formulario {
-      background: rgba(255, 255, 255, 0.05);
-      padding: 30px;
-      margin: 0 auto;
-      max-width: 600px;
-      border-radius: 15px;
-      box-shadow: 0 0 15px #00d4ff33;
-      backdrop-filter: blur(6px);
-      animation: fadeIn 1.5s ease-out;
-    }
-
-    .formulario input,
-    .formulario textarea {
-      width: 90%;
-      padding: 12px;
-      margin: 10px 0;
-      border: none;
-      border-radius: 10px;
-      background-color: #0e1624;
-      color: #e5e5e5;
-      font-size: 1em;
-      outline: none;
-      transition: 0.3s;
-    }
-
-    .formulario input:focus,
-    .formulario textarea:focus {
-      box-shadow: 0 0 10px #00ffc6;
-    }
-
-    .formulario button {
-      background: linear-gradient(90deg, #00ffc6, #00d4ff);
-      border: none;
-      color: #000;
-      font-weight: bold;
-      padding: 12px 30px;
-      border-radius: 10px;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-
-    .formulario button:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 15px #00d4ff;
-    }
-
-    /* ======== RODAPÉ ======== */
-    footer {
-      background: #0a0f1c;
-      padding: 50px 20px;
-      border-top: 2px solid #00d4ff;
-    }
-
-    footer h2 {
-      color: #00ffc6;
-    }
-
-    .contatos p {
-      margin: 10px 0;
-      font-size: 1.05em;
-      color: #b0c8d6;
-    }
-
-    .contatos i {
-      color: #00d4ff;
-      margin-right: 8px;
-    }
-
-    .creditos {
-      margin-top: 30px;
-      font-size: 0.9em;
-      color: #6b7a8e;
-    }
-
-    /* ======== ANIMAÇÕES ======== */
-    @keyframes fadeDown {
-      from { opacity: 0; transform: translateY(-20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .fade-in {
-      animation: fadeIn 1.5s ease-out;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* ======== RESPONSIVIDADE ======== */
-    @media (max-width: 768px) {
-      header h1 { font-size: 2em; }
-      h2 { font-size: 1.4em; }
-      p, li { font-size: 1em; }
-    }
-  </style>
+/* ====== RESPONSIVIDADE ====== */
+@media(max-width:768px) { .grid-servicos { flex-direction: column; align-items:center; } }
+</style>
 </head>
-
 <body>
-  <header>
-    <h1 class="neon">CasaFácil Belém</h1>
-    <p>Soluções inteligentes e tecnológicas para sua casa e negócio</p>
-  </header>
 
-  <main>
-    <section class="sobre fade-in">
-      <h2><i class="fas fa-building"></i> Sobre a Empresa</h2>
-      <p>
-        A <strong>CasaFácil Belém</strong> é referência em automação residencial, manutenção elétrica e tecnologia aplicada ao conforto e segurança do lar.
-        Nossa missão é simplificar o seu dia a dia com inovação, eficiência e qualidade.
-      </p>
-    </section>
+<header>
+  <h1>CasaFácil Belém</h1>
+  <p>Serviços profissionais com preço transparente e simulação de lucros</p>
+</header>
 
-    <section class="servicos fade-in">
-      <h2><i class="fas fa-tools"></i> Nossos Serviços</h2>
-      <ul>
-        <li><i class="fas fa-bolt"></i> Instalações elétricas e automação</li>
-        <li><i class="fas fa-screwdriver-wrench"></i> Reparos e manutenção geral</li>
-        <li><i class="fas fa-network-wired"></i> Redes e infraestrutura</li>
-        <li><i class="fas fa-lightbulb"></i> Consultoria em tecnologia residencial</li>
-      </ul>
-    </section>
+<main>
+  <!-- Sobre a Empresa -->
+  <section>
+    <h2><i class="fas fa-building"></i> Sobre a Empresa</h2>
+    <p>
+      A <strong>CasaFácil Belém</strong> é referência em automação residencial, manutenção elétrica, hidráulica e marcenaria.
+      Garantimos serviços de qualidade, profissionais especializados e preços transparentes para todos os clientes.
+    </p>
+  </section>
 
-    <section class="contato fade-in">
-      <h2><i class="fas fa-paper-plane"></i> Fale Conosco</h2>
-      <form class="formulario" action="https://formspree.io/f/mwkgyqjp" method="POST">
-        <input type="text" name="nome" placeholder="Seu nome" required>
-        <input type="email" name="email" placeholder="Seu e-mail" required>
-        <textarea name="mensagem" rows="5" placeholder="Sua mensagem..." required></textarea>
-        <button type="submit">Enviar Mensagem</button>
-      </form>
-    </section>
-  </main>
-
-  <footer>
-    <h2><i class="fas fa-envelope"></i> Contato</h2>
-    <div class="contatos">
-      <p><i class="fas fa-envelope"></i> contato@casafacilbelem.com.br</p>
-      <p><i class="fab fa-whatsapp"></i> (91) 99999-9999</p>
-      <p><i class="fas fa-map-marker-alt"></i> Belém - PA</p>
+  <!-- Grid de Profissionais -->
+  <section>
+    <h2><i class="fas fa-tools"></i> Nossos Profissionais</h2>
+    <div class="grid-servicos">
+      <div class="servico-card"><h3>Carpinteiro</h3><button onclick="verPreco('Carpinteiro')">Ver Preço</button><button onclick="simular('Carpinteiro')">Simular</button></div>
+      <div class="servico-card"><h3>Eletricista</h3><button onclick="verPreco('Eletricista')">Ver Preço</button><button onclick="simular('Eletricista')">Simular</button></div>
+      <div class="servico-card"><h3>Encanador</h3><button onclick="verPreco('Encanador')">Ver Preço</button><button onclick="simular('Encanador')">Simular</button></div>
+      <div class="servico-card"><h3>Pedreiro</h3><button onclick="verPreco('Pedreiro')">Ver Preço</button><button onclick="simular('Pedreiro')">Simular</button></div>
+      <div class="servico-card"><h3>Serralheiro</h3><button onclick="verPreco('Serralheiro')">Ver Preço</button><button onclick="simular('Serralheiro')">Simular</button></div>
+      <div class="servico-card"><h3>Ferreiro</h3><button onclick="verPreco('Ferreiro')">Ver Preço</button><button onclick="simular('Ferreiro')">Simular</button></div>
     </div>
-    <p class="creditos">© 2025 CasaFácil Belém - Todos os direitos reservados</p>
-  </footer>
+  </section>
+
+  <!-- Formulário de Contato -->
+  <section>
+    <h2><i class="fas fa-envelope"></i> Contato</h2>
+    <form class="formulario" action="https://formspree.io/f/mwkgyqjp" method="POST">
+      <input type="text" name="nome" placeholder="Seu nome" required>
+      <input type="email" name="email" placeholder="Seu e-mail" required>
+      <textarea name="mensagem" rows="5" placeholder="Sua mensagem..." required></textarea>
+      <button type="submit">Enviar Mensagem</button>
+    </form>
+  </section>
+</main>
+
+<footer>
+  <p><i class="fas fa-envelope"></i> contato@casafacilbelem.com.br | <i class="fab fa-whatsapp"></i> (91) 99999-9999</p>
+  <p>© 2025 CasaFácil Belém - Todos os direitos reservados</p>
+</footer>
+
+<!-- Modal -->
+<div class="modal-bg" id="modal-bg">
+  <div class="modal">
+    <h4 id="modal-titulo"></h4>
+    <p id="modal-conteudo"></p>
+    <button onclick="fecharModal()">Fechar</button>
+  </div>
+</div>
+
+<script>
+// ====== SCRIPT DE PREÇOS E SIMULAÇÃO ======
+const precos = {
+  'Carpinteiro': 150,
+  'Eletricista': 200,
+  'Encanador': 180,
+  'Pedreiro': 160,
+  'Serralheiro': 170,
+  'Ferreiro': 190
+};
+
+function verPreco(profissional){
+  const preco = precos[profissional];
+  document.getElementById('modal-titulo').innerText = profissional + " - Preço Tabelado";
+  document.getElementById('modal-conteudo').innerText = `Preço do serviço: R$ ${preco},00`;
+  document.getElementById('modal-bg').style.display = 'flex';
+}
+
+function simular(profissional){
+  const preco = precos[profissional];
+  const funcionario = (preco*0.7).toFixed(2);
+  const empresa = (preco*0.3).toFixed(2);
+  document.getElementById('modal-titulo').innerText = profissional + " - Simulação de Lucro";
+  document.getElementById('modal-conteudo').innerText = 
+    `Preço do serviço: R$ ${preco},00\nFuncionário recebe: R$ ${funcionario}\nLucro da empresa: R$ ${empresa}`;
+  document.getElementById('modal-bg').style.display = 'flex';
+}
+
+function fecharModal(){
+  document.getElementById('modal-bg').style.display = 'none';
+}
+</script>
+
 </body>
 </html>
