@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CasaFacilBelem — Gestão de Serviços</title>
+<style>
+  :root {
+    --primary:#0078D7;
+    --secondary:#2AA876;
+    --bg:#F5F7FA;
+    --card:#FFFFFF;
+    --text:#1F2937;
+  }
+  body {
+    margin:0;
+    font-family: Arial, sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    padding:20px;
+  }
+  header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding-bottom:20px;
+    border-bottom:1px solid #ddd;
+  }
+  header h1{
+    color:var(--primary);
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  header h1 img{
+    width:40px;
+    height:40px;
+  }
+  .controls button{
+    margin-left:8px;
+    padding:8px 12px;
+    border:none;
+    border-radius:6px;
+    cursor:pointer;
+    color:white;
+  }
+  .controls button.primary{
+    background:var(--primary);
+  }
+  .controls button.secondary{
+    background:var(--secondary);
+  }
+  .container{
+    margin-top:20px;
+  }
+  /* Card e tabela (resumido) */
+  .card{background:var(--card);padding:12px;border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,0.05);margin-bottom:12px;}
+  .table-wrap{background:var(--card);padding:12px;border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,0.05);overflow:auto;}
+  table{width:100%;border-collapse:collapse;}
+  th,td{padding:8px;border-bottom:1px solid #eee;text-align:left;}
+  th{background:#F0F3F7;}
+</style>
+</head>
+<body>
+<header>
+  <h1>
+    <img src="https://img.icons8.com/ios-filled/50/0078D7/home.png" alt="Logo CasaFacilBelem">
+    CasaFacilBelem
+  </h1>
+  <div class="controls">
+    <button class="primary" onclick="renderTable()">Mesa (Tabela)</button>
+    <button class="secondary" onclick="renderCards()">Quadrados (Cards)</button>
+    <button class="secondary" onclick="renderFlow()">Roteiro (Fluxo)</button>
+  </div>
+</header>
+
+<main class="container">
+  <div>
+    <input id="search" placeholder="Pesquisar por cliente, serviço ou técnico" style="padding:8px;width:70%;">
+    <select id="filterStatus" style="padding:8px;">
+      <option value="">Todos os status</option>
+      <option>Agendado</option>
+      <option>Em Andamento</option>
+      <option>Concluído</option>
+    </select>
+    <button onclick="applyFilters()" style="padding:8px;background:var(--primary);color:white;border:none;border-radius:6px;">Aplicar</button>
+  </div>
+  <div id="output" style="margin-top:20px;"></div>
+</main>
+
+<script>
+const dados = [
+  {id:1,cliente:'Ana Souza',servico:'Instalação de Chuveiro',categoria:'Elétrica',tecnico:'José',data:'2025-10-10',valor:90,status:'Concluído'},
+  {id:2,cliente:'Paulo Rocha',servico:'Reparo de Encanamento',categoria:'Hidráulica',tecnico:'Carlos',data:'2025-10-11',valor:110,status:'Concluído'},
+  {id:3,cliente:'João Lima',servico:'Pintura de Parede',categoria:'Pintura',tecnico:'Marcos',data:'2025-10-12',valor:120,status:'Agendado'},
+  {id:4,cliente:'Maria Alves',servico:'Montagem de Móvel',categoria:'Carpintaria',tecnico:'João',data:'2025-10-13',valor:160,status:'Em Andamento'},
+  {id:5,cliente:'Rita Silva',servico:'Troca de Tomada',categoria:'Elétrica',tecnico:'José',data:'2025-10-14',valor:70,status:'Agendado'}
+];
+let active='table';
+let filtered=[...dados];
+
+function applyFilters(){
+  const q=document.getElementById('search').value.toLowerCase().trim();
+  const status=document.getElementById('filterStatus').value;
+  filtered=dados.filter(d=>{
+    const matchQ=q===''||[d.cliente,d.servico,d.tecnico,d.categoria].join(' ').toLowerCase().includes(q);
+    const matchS=status===''||d.status===status;
+    return matchQ && matchS;
+  });
+  if(active==='table') renderTable();
+  if(active==='cards') renderCards();
+  if(active==='flow') renderFlow();
+}
+
+function renderTable(){
+  active='table';
+  const out=document.getElementById('output');
+  let html='<div class="table-wrap"><table><thead><tr><th>Cliente</th><th>Serviço</th><th>Técnico</th><th>Data</th><th>Valor</th><th>Status</th></tr></thead><tbody>';
+  filtered.forEach(r=>{
+    html+=`<tr><td>${r.cliente}</td><td>${r.servico}</td><td>${r.tecnico}</td><td>${r.data}</td><td>R$ ${r.valor}</td><td>${r.status}</td></tr>`;
+  });
+  html+='</tbody></table></div>';
+  out.innerHTML=html;
+}
+
+function renderCards(){
+  active='cards';
+  const out=document.getElementById('output');
+  let html='';
+  filtered.forEach(r=>{
+    html+=`<div class="card">
+      <strong>${r.servico}</strong>
+      <div>Cliente: ${r.cliente}</div>
+      <div>Técnico: ${r.tecnico}</div>
+      <div>Data: ${r.data} | Valor: R$ ${r.valor}</div>
+      <div>Status: ${r.status}</div>
+    </div>`;
+  });
+  out.innerHTML=html;
+}
+
+function renderFlow(){
+  active='flow';
+  const out=document.getElementById('output');
+  const agendados=filtered.filter(f=>f.status==='Agendado').length;
+  const emAndamento=filtered.filter(f=>f.status==='Em Andamento').length;
+  const concluidos=filtered.filter(f=>f.status==='Concluído').length;
+  out.innerHTML=`<div class="card">Agendados: ${agendados} | Em Andamento: ${emAndamento} | Concluídos: ${concluidos}</div>`;
+}
+
+renderTable();
+</script>
+</body>
+</html>
